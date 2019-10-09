@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context="com.example.shiva.try1.Login">
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/text_user_login"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:hint="@string/enter_email"
+        android:textColor="@color/colorBlack"
+        android:ems="10"
+        android:layout_below="@+id/text_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/edit_email"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/validate_email"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view"
+        android:layout_alignStart="@+id/edit_password"
+        android:layout_alignLeft="@+id/edit_password"
+        android:layout_alignBottom="@+id/edit_password"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginBottom="32dp"
+        android:ems="10"
+        android:gravity="center"
+        android:textColorHint="@color/colorGreen"
+        android:textColor="@color/colorRed" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="@string/enter_password"
+        android:textColor="@color/colorBlack"
+        android:ems="10"
+        android:layout_below="@+id/edit_email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/edit_password"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/validate_password"
+        android:layout_width="118dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view"
+        android:layout_alignStart="@+id/validate_email"
+        android:layout_alignLeft="@+id/validate_email"
+        android:layout_alignEnd="@+id/validate_email"
+        android:layout_alignRight="@+id/validate_email"
+        android:layout_alignBottom="@+id/edit_password"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="105dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="-30dp"
+        android:ems="10"
+        android:gravity="center"
+        android:textColor="@color/colorRed" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_login"
+        android:layout_below="@+id/edit_password"
+        android:layout_marginTop="20dp"
+        android:text="@string/login_button"/>
+
+    <TextView
+        android:id="@+id/button_register"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_login"
+        android:layout_marginTop="20dp"
+        android:text="@string/sign_up_button"
+        android:clickable="true"
+        android:gravity="center"/>
+
+</RelativeLayout>
