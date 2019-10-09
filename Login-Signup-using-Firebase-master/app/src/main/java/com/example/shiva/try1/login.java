@@ -7,14 +7,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,31 +20,35 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-public class login extends AppCompatActivity {
-    private  EditText Email, Password;
-    private  Button LogInButton;
-    private  FirebaseAuth mAuth;
-    private  FirebaseAuth.AuthStateListener mAuthListner;
+public class Login extends AppCompatActivity {
+
+    private EditText Email;
+    private EditText Password;
+    private Button LogInButton;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListner;
     private FirebaseUser mUser;
-    private String email, password;
-    private  ProgressDialog dialog;
-    private TextView createNewUser;
-    private TextView passwordValidResult,emailValidResult;
+    private String email;
+    private String password;
+    private ProgressDialog dialog;
+    private TextView newUser;
+    private TextView passwordValidResult;
+    private TextView emailValidResult;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        LogInButton = (Button) findViewById(R.id.buttonLogin);
-        Email = (EditText) findViewById(R.id.editEmail);
-        Password = (EditText) findViewById(R.id.editPassword);
-        createNewUser = (TextView)findViewById(R.id.buttonRegister);
+        LogInButton = (Button) findViewById(R.id.button_login);
+        Email = (EditText) findViewById(R.id.edit_email);
+        Password = (EditText) findViewById(R.id.edit_password);
+        newUser = (TextView) findViewById(R.id.button_register);
         dialog = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
         mUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        emailValidResult = (TextView) findViewById(R.id.validateEmail);
-        passwordValidResult = (TextView)findViewById(R.id.validatePassword);
+        emailValidResult = (TextView) findViewById(R.id.validate_email);
+        passwordValidResult = (TextView) findViewById(R.id.validate_password);
 
         LogInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,16 +58,13 @@ public class login extends AppCompatActivity {
         });
 
         createNewUser();
-
-
-
     }
 
-    private void createNewUser(){
-        createNewUser.setOnClickListener(new View.OnClickListener() {
+    private void createNewUser() {
+        newUser.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent intent = new Intent(login.this, Register.class);
+                Intent intent = new Intent(Login.this, Register.class);
                 startActivity(intent);
             }
         });
@@ -90,9 +89,11 @@ public class login extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        login.super.finish();
+        Intent setIntent = new Intent(Intent.ACTION_MAIN);
+        setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(setIntent);
     }
-
 
 
     private void userSign() {
@@ -118,10 +119,10 @@ public class login extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()) {
                     dialog.dismiss();
-                    Toast.makeText(login.this, "Login not successfull", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Login not successfull", Toast.LENGTH_SHORT).show();
                 } else {
                     dialog.dismiss();
-                    Intent intent = new Intent(login.this, DashboardActivity.class);
+                    Intent intent = new Intent(Login.this, DashboardActivity.class);
                     startActivity(intent);
                 }
             }
@@ -134,5 +135,5 @@ public class login extends AppCompatActivity {
         return (!TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
     }
 
-    }
+}
 

@@ -11,52 +11,53 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Date;
+public class Register extends AppCompatActivity implements View.OnClickListener {
 
-public class Register extends AppCompatActivity implements View.OnClickListener{
-    private EditText name,phone,email,password;
-    private  Button mRegisterbtn;
-    private  TextView mLoginPageBack;
-    private  FirebaseAuth mAuth;
-    private DatabaseReference mdatabase;
-    private String Name,Phone,Email,Password;
+    private EditText name;
+    private EditText phone;
+    private EditText email;
+    private EditText password;
+    private Button registerbtn;
+    private TextView loginPageBack;
+    private FirebaseAuth mAuth;
+    private String Name;
+    private String Phone;
+    private String Email;
+    private String Password;
     private ProgressDialog mDialog;
-    private TextView passwordValidResult,emailValidResult,phoneValidResult,nameValidResult;
+    private TextView passwordValidResult;
+    private TextView emailValidResult;
+    private TextView phoneValidResult;
+    private TextView nameValidResult;
+    final static int passwordLength = 8;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        name = (EditText)findViewById(R.id.editName);
-        phone = (EditText)findViewById(R.id.editNumber);
-        email = (EditText)findViewById(R.id.editEmail);
-        password = (EditText)findViewById(R.id.editPassword);
-        mRegisterbtn = (Button)findViewById(R.id.buttonRegister);
-        mLoginPageBack = (TextView)findViewById(R.id.buttonLogin);
+        name = findViewById(R.id.edit_name);
+        phone = findViewById(R.id.edit_number);
+        email = findViewById(R.id.edit_email);
+        password = findViewById(R.id.edit_password);
+        registerbtn = findViewById(R.id.button_register);
+        loginPageBack = findViewById(R.id.button_login);
 
-
-        emailValidResult = (TextView) findViewById(R.id.validateEmail);
-        passwordValidResult = (TextView)findViewById(R.id.validatePassword);
-        phoneValidResult = (TextView) findViewById(R.id.validatePhone);
-        nameValidResult = (TextView)findViewById(R.id.validateName);
+        emailValidResult = findViewById(R.id.validate_email);
+        passwordValidResult = findViewById(R.id.validate_password);
+        phoneValidResult = findViewById(R.id.validate_phone);
+        nameValidResult = findViewById(R.id.validate_name);
 
         mAuth = FirebaseAuth.getInstance();
-        mRegisterbtn.setOnClickListener(this);
-        mLoginPageBack.setOnClickListener(this);
+        registerbtn.setOnClickListener(this);
+        loginPageBack.setOnClickListener(this);
         mDialog = new ProgressDialog(this);
-        mdatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-
     }
 
     @Override
@@ -69,45 +70,43 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        if (v==mRegisterbtn){
-            UserRegister();
-        }else if (v== mLoginPageBack){
-        startActivity(new Intent(Register.this,login.class));
+        if (v == registerbtn) {
+            registerUser();
+        } else if (v == loginPageBack) {
+            startActivity(new Intent(Register.this, Login.class));
         }
     }
 
-    private void UserRegister() {
+    private void registerUser() {
         Name = name.getText().toString().trim();
         Phone = phone.getText().toString().trim();
         Email = email.getText().toString().trim();
         Password = password.getText().toString().trim();
 
         if (TextUtils.isEmpty(Email)) {
-            emailValidResult.setText("Email is required");
+            emailValidResult.setText(R.string.email_required);
             return;
         } else if (!isValidEmail(Email)) {
-            emailValidResult.setText("Email is not valid");
+            emailValidResult.setText(R.string.email_invalid);
             return;
-        } else if (Password.length() < 8) {
-            passwordValidResult.setText("Password must be more than 8 characters long");
+        } else if (Password.length() < passwordLength) {
+            passwordValidResult.setText(R.string.short_password);
             return;
         } else if (TextUtils.isEmpty(Phone)) {
-            phoneValidResult.setText("Phone is required");
+            phoneValidResult.setText(R.string.phone_required);
             return;
         } else if (TextUtils.isEmpty(Name)) {
-            nameValidResult.setText("Email is required");
+            nameValidResult.setText(R.string.email_required);
             return;
         }
 
-
-        mDialog.setMessage("Creating User please wait...");
+        mDialog.setMessage(getString(R.string.creating_user));
         mDialog.setCanceledOnTouchOutside(false);
         mDialog.show();
 
-        mAuth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.createUserWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-
 
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -127,19 +126,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                                 }
                             }
                         });
-
-
-
-
-
-
-
-
             }
         });
     }
 
-    public static boolean isValidEmail(CharSequence email) {
+    public boolean isValidEmail(CharSequence email) {
         return (!TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
     }
 

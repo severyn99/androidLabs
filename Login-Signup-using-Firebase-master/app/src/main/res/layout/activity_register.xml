@@ -11,40 +11,39 @@
     tools:context="com.example.shiva.try1.Register">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="User Sign Up"
-        android:textColor="#000"
-        android:textSize="20dp" />
+        android:text="@string/sign_up_text"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp" />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:hint="Enter Name"
-        android:textColor="#000"
+        android:hint="@string/enter_name"
+        android:textColor="@color/colorBlack"
         android:ems="10"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/text_view"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:id="@+id/editName"
+        android:id="@+id/edit_name"
         android:gravity="center"/>
 
     <TextView
-        android:id="@+id/validateName"
+        android:id="@+id/validate_name"
         android:layout_width="382dp"
         android:layout_height="36dp"
-        android:layout_below="@+id/textView"
-
-        android:layout_alignStart="@+id/validateEmail"
-        android:layout_alignLeft="@+id/validateEmail"
-        android:layout_alignEnd="@+id/validateEmail"
-        android:layout_alignRight="@+id/validateEmail"
-        android:layout_alignBottom="@+id/editPassword"
+        android:layout_below="@+id/text_view"
+        android:layout_alignStart="@+id/validate_email"
+        android:layout_alignLeft="@+id/validate_email"
+        android:layout_alignEnd="@+id/validate_email"
+        android:layout_alignRight="@+id/validate_email"
+        android:layout_alignBottom="@+id/edit_password"
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="52dp"
@@ -53,33 +52,31 @@
         android:layout_marginBottom="175dp"
         android:ems="10"
         android:gravity="center"
-
-        android:textColor="#FF0000" />
+        android:textColor="@color/colorRed" />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="phone"
-        android:hint="Enter phone number"
-        android:textColor="#000"
+        android:hint="@string/enter_phone"
+        android:textColor="@color/colorBlack"
         android:ems="10"
-        android:layout_below="@+id/editName"
+        android:layout_below="@+id/edit_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:id="@+id/editNumber"
+        android:id="@+id/edit_number"
         android:gravity="center"/>
 
     <TextView
-        android:id="@+id/validatePhone"
+        android:id="@+id/validate_phone"
         android:layout_width="382dp"
         android:layout_height="36dp"
-        android:layout_below="@+id/textView"
-
-        android:layout_alignStart="@+id/validateEmail"
-        android:layout_alignLeft="@+id/validateEmail"
-        android:layout_alignEnd="@+id/validateEmail"
-        android:layout_alignRight="@+id/validateEmail"
-        android:layout_alignBottom="@+id/editPassword"
+        android:layout_below="@+id/text_view"
+        android:layout_alignStart="@+id/validate_email"
+        android:layout_alignLeft="@+id/validate_email"
+        android:layout_alignEnd="@+id/validate_email"
+        android:layout_alignRight="@+id/validate_email"
+        android:layout_alignBottom="@+id/edit_password"
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="121dp"
@@ -88,30 +85,27 @@
         android:layout_marginBottom="106dp"
         android:ems="10"
         android:gravity="center"
-
-        android:textColor="#FF0000" />
+        android:textColor="@color/colorRed" />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
-        android:hint="Enter Email"
-        android:textColor="#000"
+        android:hint="@string/enter_email_big"
+        android:textColor="@color/colorBlack"
         android:ems="10"
-        android:layout_below="@+id/editNumber"
+        android:layout_below="@+id/edit_number"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:id="@+id/editEmail"
+        android:id="@+id/edit_email"
         android:gravity="center"/>
 
     <TextView
-        android:id="@+id/validateEmail"
+        android:id="@+id/validate_email"
         android:layout_width="382dp"
         android:layout_height="36dp"
-        android:layout_below="@+id/textView"
-
-
-        android:layout_alignBottom="@+id/editPassword"
+        android:layout_below="@+id/text_view"
+        android:layout_alignBottom="@+id/edit_password"
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="184dp"
@@ -120,33 +114,31 @@
         android:layout_marginBottom="43dp"
         android:ems="10"
         android:gravity="center"
-
-        android:textColor="#FF0000" />
+        android:textColor="@color/colorRed" />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
-        android:hint="Enter Password"
-        android:textColor="#000"
+        android:hint="@string/enter_password_big"
+        android:textColor="@color/colorBlack"
         android:ems="10"
-        android:layout_below="@+id/editEmail"
+        android:layout_below="@+id/edit_email"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:id="@+id/editPassword"
+        android:id="@+id/edit_password"
         android:gravity="center"/>
 
     <TextView
-        android:id="@+id/validatePassword"
+        android:id="@+id/validate_password"
         android:layout_width="382dp"
         android:layout_height="36dp"
-        android:layout_below="@+id/textView"
-
-        android:layout_alignStart="@+id/validateEmail"
-        android:layout_alignLeft="@+id/validateEmail"
-        android:layout_alignEnd="@+id/validateEmail"
-        android:layout_alignRight="@+id/validateEmail"
-        android:layout_alignBottom="@+id/editPassword"
+        android:layout_below="@+id/text_view"
+        android:layout_alignStart="@+id/validate_email"
+        android:layout_alignLeft="@+id/validate_email"
+        android:layout_alignEnd="@+id/validate_email"
+        android:layout_alignRight="@+id/validate_email"
+        android:layout_alignBottom="@+id/edit_password"
         android:layout_marginStart="-2dp"
         android:layout_marginLeft="-2dp"
         android:layout_marginTop="253dp"
@@ -155,23 +147,23 @@
         android:layout_marginBottom="-26dp"
         android:ems="10"
         android:gravity="center"
-
-        android:textColor="#FF0000" />
+        android:textColor="@color/colorRed" />
 
     <Button
-        android:id="@+id/buttonRegister"
+        android:id="@+id/button_register"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editPassword"
+        android:layout_below="@+id/edit_password"
         android:layout_marginTop="20dp"
-        android:text="SIGN UP" />
+        android:text="@string/sign_up_button_small" />
+
     <TextView
-        android:id="@+id/buttonLogin"
+        android:id="@+id/button_login"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonRegister"
+        android:layout_below="@+id/button_register"
         android:layout_marginTop="20dp"
-        android:text="LOGIN"
+        android:text="@string/login_button_merged"
         android:clickable="true"
         android:gravity="center"/>
 
