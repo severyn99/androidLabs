@@ -16,6 +16,8 @@ import com.example.firebaseauth.entities.Panel;
 import com.example.firebaseauth.R;
 import com.example.firebaseauth.activities.PanelDetailsActivity;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class PanelAdapter extends RecyclerView.Adapter<PanelAdapter.PanelViewHolder> {
@@ -23,9 +25,9 @@ public class PanelAdapter extends RecyclerView.Adapter<PanelAdapter.PanelViewHol
     private List<Panel> panelList;
     private Context context;
 
-     public PanelAdapter(Context context, List<Panel> panelList){
+     public PanelAdapter(Context context){
          this.context = context;
-         this.panelList = panelList;
+         this.panelList = new ArrayList<>();
     }
 
     @NonNull
@@ -44,12 +46,7 @@ public class PanelAdapter extends RecyclerView.Adapter<PanelAdapter.PanelViewHol
         holder.power.setText(panelList.get(position).getPower());
         holder.capacity.setText(panelList.get(position).getCapacity());
         holder.address.setText(panelList.get(position).getAddress());
-        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openItemDetails(position);
-            }
-        });
+        holder.parentLayout.setOnClickListener(view -> openItemDetails(position));
     }
 
     @Override

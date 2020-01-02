@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.firebaseauth.R;
+
 public class Sample extends Fragment {
     @Nullable
     @Override
