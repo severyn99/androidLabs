@@ -6,6 +6,8 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.firebaseauth.R;
 import com.squareup.picasso.Picasso;
 import java.util.Objects;
 

@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
 import android.view.View;
 
+import com.example.firebaseauth.R;
 import com.google.android.material.snackbar.Snackbar;
 
 public class Network extends BroadcastReceiver {
