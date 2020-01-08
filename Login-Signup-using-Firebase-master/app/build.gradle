@@ -18,6 +18,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {
@@ -34,6 +38,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'androidx.viewpager2:viewpager2:1.0.0-rc01'
     implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.firebase:firebase-messaging:20.0.1'
 
     //noinspection GradleCompatible
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'

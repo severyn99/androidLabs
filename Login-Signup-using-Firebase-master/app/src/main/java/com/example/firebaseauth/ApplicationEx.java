@@ -1,8 +1,10 @@
 package com.example.firebaseauth;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

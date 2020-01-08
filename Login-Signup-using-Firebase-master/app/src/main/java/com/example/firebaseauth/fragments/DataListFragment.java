@@ -69,12 +69,9 @@ public class DataListFragment extends Fragment {
 
     private void setupSwipeToRefresh(){
         swipeRefreshLayout.setOnRefreshListener(
-                new SwipeRefreshLayout.OnRefreshListener() {
-                    @Override
-                    public void onRefresh() {
-                        loadPanels();
-                        swipeRefreshLayout.setRefreshing(false);
-                    }
+                () -> {
+                    loadPanels();
+                    swipeRefreshLayout.setRefreshing(false);
                 }
         );
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
@@ -88,7 +85,7 @@ public class DataListFragment extends Fragment {
             @Override
             public void onResponse(final Call<List<Panel>> call,
                                    final Response<List<Panel>> response) {
-                adapter = new PanelAdapter(getActivity(), response.body());
+                adapter = new PanelAdapter(getActivity());
                 recyclerView.setAdapter(adapter);
                 swipeRefreshLayout.setRefreshing(false);
             }

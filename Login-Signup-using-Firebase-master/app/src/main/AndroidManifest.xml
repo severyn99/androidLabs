@@ -36,6 +36,12 @@
             android:label="Sign Up"
             android:noHistory="true" />
 
+        <service android:name=".cloud_messaging.MyFireBaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
         <receiver android:name=".utils.NetworkChangeReceiver">
             <intent-filter>
                 <action

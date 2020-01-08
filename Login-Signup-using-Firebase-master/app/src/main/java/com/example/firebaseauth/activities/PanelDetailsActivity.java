@@ -1,5 +1,7 @@
 package com.example.firebaseauth.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -28,7 +30,6 @@ public class PanelDetailsActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
 
-
     private void initViews(){
         panelType = findViewById(R.id.panel_details_type);
         power = findViewById(R.id.panel_details_power);
@@ -49,6 +50,9 @@ public class PanelDetailsActivity extends AppCompatActivity {
             String imageUrlInfo = getIntent().getStringExtra("image");
 
             setInfo(panelTypeInfo, powerInfo, capacityInfo, addressInfo, imageUrlInfo);
+
+            String message = getIntent().getStringExtra("message");
+            showMessage(message);
         }
     }
 
@@ -72,5 +76,14 @@ public class PanelDetailsActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showMessage(final String message) {
+        new AlertDialog.Builder(this)
+                .setTitle("Received message")
+                .setMessage(message)
+                .setNegativeButton("close", null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 }
